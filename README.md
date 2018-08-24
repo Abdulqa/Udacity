@@ -4,9 +4,9 @@ _______________________
 ## About
 The project has three questions.
 
-Q1. What are the most popular three articles of all time?
-Q2. Who are the most popular article authors of all time?
-Q3. On which days did more than 1% of requests lead to errors?
+- Q1. What are the most popular three articles of all time?
+- Q2. Who are the most popular article authors of all time?
+- Q3. On which days did more than 1% of requests lead to errors?
 
 
 ## Prerequisites
