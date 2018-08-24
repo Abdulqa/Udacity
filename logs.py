@@ -34,10 +34,10 @@ def get_popular_three_article():
     """Return  most popular three articles of all time"""
     try:
         db = psycopg2.connect(database=DBNAME)
-    except:
+    except e:
         print("unable to connect database")
     c = db.cursor()
-    c.execute("""select title,count(title) from articles,log where 
+    c.execute("""select title,count(title) from articles,log where
     slug = substring(path,10) group by title order by 2 desc limit 3""")
     top_three = c.fetchall()
     db.close()
@@ -48,29 +48,29 @@ def get_popular_three_authors():
     """Return  most popular three authors of all time"""
     try:
         db = psycopg2.connect(database=DBNAME)
-    except:
+    except e:
         print("unable to connect database")
     c = db.cursor()
-    c.execute("""select name,count(name) from articles,log,authors 
-    where slug = substring(path,10) and author = authors.id 
+    c.execute("""select name,count(name) from articles,log,authors
+    where slug = substring(path,10) and author = authors.id
     group by name order by 2 desc limit 3;""")
     top_three = c.fetchall()
     db.close()
     return top_three
-    
-    
+
+
 def get_daily_perc():
     """Return daily error request rate which is > 1% """
     try:
         db = psycopg2.connect(database=DBNAME)
-    except:
+    except e:
         print("unable to connect database")
     c = db.cursor()
     c.execute(" select * from daily_perc where perc > 1;")
     daily_perc = c.fetchall()
     db.close()
     return daily_perc
-    
-    
+
+
 if __name__ == '__main__':
     main()
